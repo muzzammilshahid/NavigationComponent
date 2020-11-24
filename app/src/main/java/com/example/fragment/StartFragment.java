@@ -44,7 +44,19 @@ public class StartFragment extends Fragment {
         Button button = view.findViewById(R.id.startGameButton);
 
 
-        //On the click of button navigate to Game Fragment
-        button.setOnClickListener(v -> navController.navigate(R.id.action_startFragment_to_gameFragment));
+        //On the click of button navigate to Game Fragment and send message to the GameFragment
+        button.setOnClickListener(v -> {
+            //This commented code was only for sending message
+//            StartFragmentDirections.ActionStartFragmentToGameFragment action = StartFragmentDirections .actionStartFragmentToGameFragment();
+//            action.setMessage("this is some message...");
+//            navController.navigate(action);
+
+
+            //Sending message and user in GameFragment
+            User user = new User(26,"Abc");
+            StartFragmentDirections.ActionStartFragmentToGameFragment action = StartFragmentDirections.actionStartFragmentToGameFragment(user);
+            action.setMessage("This is message String Argument...");
+            navController.navigate(action);
+        });
     }
 }
